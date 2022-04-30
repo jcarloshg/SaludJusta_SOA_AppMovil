@@ -12,26 +12,17 @@ export const LandPage = () => {
     return (
 
         <SafeAreaView>
-            <ScrollView style={{ padding: 10 }}>
-
+            <ScrollView style={{ padding: 15 }}>
                 <View>
 
-                    <View style={[{ flexDirection: 'row', alignItems: 'center', }]}>
-
-                        <Image style={{ height: 80, width: 80 }} source={logo} />
-                        {/* <BoxSpace side={80} border={true} /> */}
-                        <BoxSpace side={5} />
-                        {/* <Text style={globalstyles.subTitle}>Salud Justa</Text> */}
-
-                        <View style={{ flex: 1 }} />
-
+                    <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }]}>
+                        <Image style={{ height: 100, width: 100 }} source={logo} />
                         <ButtonTouchable
                             label={"Iniciar sesión"}
                             style={"PRIMARY"}
                             onPress={() => console.log("Iniciar sesión")}
                         />
                     </View>
-
 
                     <BoxSpace side={30} />
                     <ButtonTouchable
@@ -42,7 +33,15 @@ export const LandPage = () => {
 
                     <BoxSpace side={30} />
                     <Text style={globalstyles.subTitle}>Noticias</Text>
-                    <BoxSpace side={300} border={true} />
+                    <Card>
+                        <Text style={[globalstyles.text]}>Contribuir a que cada día más personas, en más lugares,</Text>
+                    </Card>
+                    <Card>
+                        <Text style={[globalstyles.text]}>Contribuir a que cada día más personas, en más lugares,</Text>
+                    </Card>
+                    <Card>
+                        <Text style={[globalstyles.text]}>Contribuir a que cada día más personas, en más lugares,</Text>
+                    </Card>
 
                     <BoxSpace side={30} />
                     <View>
