@@ -1,4 +1,5 @@
 import { Button, Divider } from '@rneui/base';
+import { useTheme } from '@rneui/themed';
 import React from 'react'
 import { Image, View } from 'react-native';
 import { colors } from '../../styled-components';
@@ -6,8 +7,9 @@ import { ButtonTouchable } from '../ButtonTouchable/ButtonTouchable';
 
 export const TopBar = () => {
 
-    // const logo = require('../../assets/salud_justa_logo.png');
     const logo = require('../../assets/salud_justa_logo.png');
+
+    const { theme } = useTheme();
 
     return (
         <View style={{ padding: 10 }}>

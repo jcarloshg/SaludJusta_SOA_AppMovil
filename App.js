@@ -23,19 +23,17 @@ export default function App() {
 	const myTheme = themeProvider;
 
 	return (
-		<View>
-			<ThemeProvider theme={myTheme}>
-				<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
+		<ThemeProvider theme={myTheme}>
+			<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
 
-				<TopBar />
+			<TopBar />
 
-				<NavigationContainer theme={theme}>
-					<Stack.Navigator initialRouteName="LandPage">
-						<Stack.Screen name="LandPage" component={LandPage} options={{ headerShown: false }} />
-						<Stack.Screen name="LandPage_OTRA" component={LandPage_OTRA} />
-					</Stack.Navigator>
-				</NavigationContainer>
-			</ThemeProvider>
-		</View>
+			<NavigationContainer theme={theme}>
+				<Stack.Navigator initialRouteName="LandPage">
+					<Stack.Screen name="LandPage" component={LandPage} options={{ headerShown: false }} />
+					<Stack.Screen name="LandPage_OTRA" component={LandPage_OTRA} />
+				</Stack.Navigator>
+			</NavigationContainer>
+		</ThemeProvider>
 	);
 }
