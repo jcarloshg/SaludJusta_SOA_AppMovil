@@ -1,13 +1,19 @@
 import { Button, Card, useTheme } from '@rneui/themed';
 import React from 'react'
-import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native'
+import { View, SafeAreaView, ScrollView, Image } from 'react-native'
 import { BoxSpace, ButtonTouchable } from '../../components';
 import { colors, globalstyles } from '../../styled-components';
+
+import { AntDesign } from '@expo/vector-icons';
+import { Text } from '@rneui/base';
 
 
 export const LandPage = () => {
 
-    const logo = require('../../assets/salud_justa_logo.png');
+    const { theme } = useTheme();
+
+    console.log(theme);
+    console.log(theme?.colors?.warning);
 
     return (
 
@@ -15,24 +21,29 @@ export const LandPage = () => {
             <ScrollView style={{ padding: 15 }}>
                 <View>
 
-                    <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }]}>
-                        <Image style={{ height: 100, width: 100 }} source={logo} />
-                        <ButtonTouchable
-                            label={"Iniciar sesión"}
-                            style={"PRIMARY"}
-                            onPress={() => console.log("Iniciar sesión")}
-                        />
-                    </View>
-
-                    <BoxSpace side={30} />
-                    <ButtonTouchable
-                        label={"Crear una cita"}
-                        style={"PRIMARY"}
+                    <Button
+                        title={'Generar una cita'}
                         onPress={() => console.log("Crear una cita")}
+                        buttonStyle={{ backgroundColor: colors.PRIMARY }}
                     />
 
                     <BoxSpace side={30} />
-                    <Text style={globalstyles.subTitle}>Noticias</Text>
+                    <Text
+                        h3
+                        h3Style={{ color: theme?.colors?.warning }}
+                    >
+                        Noticias
+                    </Text>
+
+                    <BoxSpace side={30} />
+                    <Text
+                        h3
+                        h3Style={{ color: theme?.myColors.PRIMARY }}
+                    >
+                        ¿Quienes somos?
+                    </Text>
+
+                    {/* <Text style={globalstyles.subTitle}>Noticias</Text>
                     <Card>
                         <Text style={[globalstyles.text]}>Contribuir a que cada día más personas, en más lugares,</Text>
                     </Card>
@@ -67,8 +78,7 @@ export const LandPage = () => {
                             </Text>
                         </Card>
 
-                    </View>
-
+                    </View> */}
 
                     <BoxSpace side={30} />
                 </View>

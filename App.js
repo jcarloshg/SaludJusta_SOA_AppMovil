@@ -3,7 +3,9 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LandPage, LandPage_OTRA } from './src/pages';
 import { StatusBar, View } from 'react-native';
-import { colors } from './src/styled-components';
+import { TopBar } from './src/components';
+import { ThemeProvider } from '@rneui/themed';
+import { themeProvider } from './src/contexts';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,16 +20,22 @@ export default function App() {
 		},
 	};
 
-	return (
-		<>
-			<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
+	const myTheme = themeProvider;
 
-			<NavigationContainer theme={theme}>
-				<Stack.Navigator initialRouteName="LandPage">
-					<Stack.Screen name="LandPage" component={LandPage} options={{ headerShown: false }} />
-					<Stack.Screen name="LandPage_OTRA" component={LandPage_OTRA} />
-				</Stack.Navigator>
-			</NavigationContainer>
-		</>
+	return (
+		<View>
+			<ThemeProvider theme={myTheme}>
+				<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
+
+				<TopBar />
+
+				<NavigationContainer theme={theme}>
+					<Stack.Navigator initialRouteName="LandPage">
+						<Stack.Screen name="LandPage" component={LandPage} options={{ headerShown: false }} />
+						<Stack.Screen name="LandPage_OTRA" component={LandPage_OTRA} />
+					</Stack.Navigator>
+				</NavigationContainer>
+			</ThemeProvider>
+		</View>
 	);
 }
