@@ -1,11 +1,14 @@
 
+import { Text } from '@rneui/themed'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import { globalstyles } from '../../../styled-components'
 
 export const Loggin = () => {
     return (
-        <View>
-            <Text>Loggin</Text>
-        </View>
+        <SafeAreaView style={globalstyles.container}>
+            <Text>CrearCliente</Text>
+            <Text h3 style={{ fontSize: 18 }}>{title}</Text>
+        </SafeAreaView>
     )
 }
