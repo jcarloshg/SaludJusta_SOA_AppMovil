@@ -22,7 +22,7 @@ export const CrearCliente = () => {
                 placeholder='Apellidos(s)'
             />
             <Input
-                placeholder='Edad'
+                placeholder='Edad'b
             />
             <Input
                 placeholder='Genero'
