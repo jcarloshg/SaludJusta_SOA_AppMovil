@@ -30,6 +30,12 @@ export const globalstyles = StyleSheet.create({
     border: {
         borderWidth: 1,
         borderColor: colors.RED_FF0000,
+    },
+
+    container: {
+        flex: 1,
+        padding: 15
     }
+
 });
 

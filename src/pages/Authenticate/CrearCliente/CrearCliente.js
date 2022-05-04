@@ -2,10 +2,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-export const Loggin = () => {
+export const CrearCliente = () => {
     return (
         <View>
-            <Text>Loggin</Text>
+            <Text>CrearCliente</Text>
         </View>
     )
 }

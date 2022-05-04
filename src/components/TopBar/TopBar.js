@@ -15,11 +15,6 @@ export const TopBar = () => {
         <View style={{ padding: 10 }}>
             <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }]}>
                 <Image style={{ height: 100, width: 100 }} source={logo} />
-                <Button
-                    title={'Iniciar sesión'}
-                    onPress={() => console.log("Iniciar sesión")}
-                    buttonStyle={{ backgroundColor: colors.PRIMARY }}
-                />
             </View>
             <Divider />
         </View>
