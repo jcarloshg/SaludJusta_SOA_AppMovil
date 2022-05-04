@@ -2,9 +2,10 @@
 import { Button, Input, Text, useTheme } from '@rneui/themed'
 import React from 'react'
 import { SafeAreaView, TouchableOpacity, View } from 'react-native'
-import { BoxSpace } from '../../../components'
+import { BoxSpace, SelectOption } from '../../../components'
 import { globalstyles } from '../../../styled-components'
 import { AntDesign } from '@expo/vector-icons';
+import { optionsGender } from './models/optionsGender '
 
 export const CrearCliente = () => {
 
@@ -38,11 +39,12 @@ export const CrearCliente = () => {
                 label={"Edad"}
                 keyboardType='numeric'
                 maxLength={2}
+                onPressIn={() => console.log("laskdf")}
             />
 
-            <Input
-                label={"Genero"}
-                rightIcon={() => onTouchGeneroIcon()}
+            <SelectOption
+                options={optionsGender}
+                label="Genero"
             />
 
             <View style={[globalstyles.bottom_element]}>
