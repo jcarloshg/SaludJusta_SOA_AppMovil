@@ -1,7 +1,9 @@
+
 import React from 'react'
 import { Card, useTheme, Text } from '@rneui/themed';
 import { Image, View } from 'react-native';
-import { dateToString } from '../../../../utilities/date';
+// import { dateToString } from '../../../../../../../utilities/date';
+import { dateToString } from '../../../../../utilities/date';
 
 export const CardNoticia = ({
     title = null,
@@ -9,7 +11,7 @@ export const CardNoticia = ({
     date = new Date(),
 }) => {
 
-    const imgNew = require('../../../../assets/news_img.jpg');
+    const imgNew = require('../../../../../assets/news_img.jpg');
 
     const { theme } = useTheme();
 
