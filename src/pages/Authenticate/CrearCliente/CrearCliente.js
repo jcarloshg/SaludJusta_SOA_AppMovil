@@ -1,39 +1,58 @@
 
 import { Button, Input, Text, useTheme } from '@rneui/themed'
 import React from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, TouchableOpacity, View } from 'react-native'
 import { BoxSpace } from '../../../components'
 import { globalstyles } from '../../../styled-components'
+import { AntDesign } from '@expo/vector-icons';
 
 export const CrearCliente = () => {
 
     const { theme } = useTheme();
 
+    const onTouchGeneroIcon = () => {
+        return (
+            <TouchableOpacity onPress={() => console.log("asdf")}>
+                <AntDesign name="caretdown" size={18} color="black" />
+            </TouchableOpacity>
+        )
+    }
+
     return (
-        <SafeAreaView style={globalstyles.container}>
+        <SafeAreaView style={[globalstyles.container]}>
+
+            <BoxSpace side={15} />
             <Text h3 >Crear nueva cliente</Text>
-            <Text h4 >CrearCliente</Text>
+            {/* <BoxSpace side={5} /> */}
+            <Text>Completa los campos siguientes</Text>
 
             <BoxSpace side={30} />
             <Input
-                placeholder='Nombres(s)'
-            />
-            <Input
-                placeholder='Apellidos(s)'
-            />
-            <Input
-                placeholder='Edad'b
-            />
-            <Input
-                placeholder='Genero'
+                label={"Nombres(s)"}
             />
 
-            <Button
-                title={'Quiero generar una cita'}
-                onPress={() => console.log("Crear una cita")}
-                buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
+            <Input
+                label={"Apellidos(s)"} />
+
+            <Input
+                label={"Edad"}
+                keyboardType='numeric'
+                maxLength={2}
             />
 
-        </SafeAreaView>
+            <Input
+                label={"Genero"}
+                rightIcon={() => onTouchGeneroIcon()}
+            />
+
+            <View style={[globalstyles.bottom_element]}>
+                <Button
+                    title={'Siguiente'}
+                    onPress={() => console.log("Siguiente")}
+                    buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
+                />
+            </View>
+
+        </SafeAreaView >
     )
 }

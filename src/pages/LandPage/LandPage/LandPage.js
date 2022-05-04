@@ -36,7 +36,7 @@ export const LandPage = ({ route, navigation }) => {
         <>
             <TopBar />
 
-            <SafeAreaView style={globalstyles.container}>
+            <SafeAreaView style={globalstyles.container_flex}>
 
                 <Button
                     title={'Iniciar sesión'}
