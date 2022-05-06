@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { AlertButtons } from '../../../components/AlertButtons/AlertButtons';
 import User from '../../../models/entities/User.entitie';
 import { AutenticateContext } from '../HomeAutenticate/Context/AutenticateProvider';
 import { createAccount, existAccount } from './services';
@@ -23,12 +24,21 @@ export const useCrearCuenta = ({ route, navigation }) => {
         setConfiPass(auxConfiPass);
 
         if (auxPass === "" || auxConfiPass === "") return;
-        if (auxPass === auxConfiPass) updatePassword(_pass ?? _confiPass);
+        (auxPass === auxConfiPass)
+            ? updatePassword(_pass ?? _confiPass)
+            : console.log("[ERROR] -> contrasenias equivocadas");
 
     }
 
     const crearCuenta = () => {
-        if (auxUserClient.phoneNumber && auxUserClient.email && auxUserClient.password) {
+
+        AlertButtons({
+            title: 'Debes de llenar todos los campo',
+            funcPrimary: () => { },
+            labelPrimary: 'Aceptar'
+        });
+
+        if (auxUserClient.phoneNumber && auxUserClient.email) {
             setUserClient(
                 userClient => ({
                     ...userClient,
@@ -37,22 +47,26 @@ export const useCrearCuenta = ({ route, navigation }) => {
                     password: auxUserClient.password,
                 })
             );
+        } else {
+            AlertButtons({
+                title: 'Debes de llenar todos los campo',
+                funcPrimary: () => { },
+                labelPrimary: 'Aceptar'
+            });
         }
     }
 
     useEffect(() => {
-
         (async () => {
 
             const resExistAccount = await existAccount(userClient.email);
-            console.log(resExistAccount);
-            // if (resExistAccount.isOk === false) {
-            //     console.log("resExistAccount - show error");
-            //     return;
-            // }
+            if (resExistAccount.isOk === true) {
+                console.log("resExistAccount - existe cuenta");
+                return;
+            }
 
-            // const plok = await createAccount(userClient);
-            // console.log(`[plok] -> `, plok);
+            const resCreateAccount = await createAccount(userClient);
+            console.log(`[resCreateAccount] -> `, resCreateAccount);
 
         })();
 

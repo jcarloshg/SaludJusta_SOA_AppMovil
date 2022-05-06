@@ -9,7 +9,7 @@ export const existAccount = async (email) => {
     try {
 
         // http://192.168.1.89:8080/api_account/existAccount?email=alejando@email.com
-        const url = `http://192.168.1.89:8080${process.env.REACT_APP_API_ACCOUNT}/existAccount`
+        const url = `${process.env.LOCAL_HOST_JOB}${process.env.REACT_APP_API_ACCOUNT}/existAccount`
         // const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_API_ACCOUNT}/existAccount`;
         const res = await axios.get(
             url,

@@ -1,5 +1,6 @@
 
 const axios = require('axios').default;
+const qs = require('qs')
 import User from '../../../../models/entities/User.entitie';
 
 /**
@@ -10,18 +11,31 @@ import User from '../../../../models/entities/User.entitie';
 export const createAccount = async (user) => {
     try {
 
-        const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_API_ACCOUNT}/createAccount`;
+        const url = `${process.env.LOCAL_HOST_JOB}${process.env.REACT_APP_API_ACCOUNT}/createAccount`;
 
-        console.log(url);
-
-        const params = new URLSearchParams();
-
-        Object.entries(user).forEach(entry => {
-            const [key, value] = entry;
-            params.append(key, value);
+        const data = qs.stringify({
+            name: user.name,
+            lastName: user.lastName,
+            age: user.age,
+            gender: user.gender,
+            phoneNumber: user.phoneNumber,
+            email: user.email,
+            password: user.password,
+            role: 'CLIENT',
         });
 
-        return await axios.post(url, params);
+        const config = {
+            method: 'post',
+            url: url,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: data
+        };
+
+        return await axios(config)
+            .then((response) => response.data)
+            .catch((error) => error.response.data);
 
     } catch (error) {
         // console.log(`[recordResults] -> `, error);

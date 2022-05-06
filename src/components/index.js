@@ -1,3 +1,4 @@
+export * from './AlertButtons/AlertButtons';
 export * from './BoxSpace/BoxSpace';
 export * from './ButtonTouchable/ButtonTouchable';
 export * from './ButtonTouchable/styles';
