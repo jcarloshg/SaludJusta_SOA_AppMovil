@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import User from '../../../models/entities/User.entitie';
 import { AutenticateContext } from '../HomeAutenticate/Context/AutenticateProvider';
+import { createAccount, existAccount } from './services';
 
 export const useCrearCuenta = ({ route, navigation }) => {
 
@@ -28,9 +29,6 @@ export const useCrearCuenta = ({ route, navigation }) => {
 
     const crearCuenta = () => {
         if (auxUserClient.phoneNumber && auxUserClient.email && auxUserClient.password) {
-            // TODO add service
-            console.log(`[auxUserClient] -> `, auxUserClient);
-
             setUserClient(
                 userClient => ({
                     ...userClient,
@@ -39,9 +37,28 @@ export const useCrearCuenta = ({ route, navigation }) => {
                     password: auxUserClient.password,
                 })
             );
-
         }
     }
+
+    useEffect(() => {
+
+        (async () => {
+
+            const resExistAccount = await existAccount(userClient.email);
+            console.log(resExistAccount);
+            // if (resExistAccount.isOk === false) {
+            //     console.log("resExistAccount - show error");
+            //     return;
+            // }
+
+            // const plok = await createAccount(userClient);
+            // console.log(`[plok] -> `, plok);
+
+        })();
+
+        return () => { }
+    }, [userClient]);
+
 
 
     return {
