@@ -1,11 +1,21 @@
-import { Input, Text } from '@rneui/themed'
+import { Button, Input, Text } from '@rneui/themed'
 import React from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import { BoxSpace } from '../../../components'
 import { globalstyles } from '../../../styled-components'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useCrearCuenta } from './useCrearCuenta'
 
-export const CrearCuenta = () => {
+export const CrearCuenta = ({ route, navigation }) => {
+
+    const {
+        updatePhoneNumber,
+        updateEmail,
+        updatePassword,
+        changePass,
+        crearCuenta
+    } = useCrearCuenta({ route, navigation });
+
     return (
 
         <SafeAreaView style={[globalstyles.container]}>
@@ -17,28 +27,33 @@ export const CrearCuenta = () => {
             <BoxSpace side={30} />
             <Input
                 label={'Número de telefono'}
-                // value={opstionSelected}
-                // onPressIn={() => setModalVisible(true)}
+                keyboardType='numeric'
+                onChangeText={(number) => updatePhoneNumber(number)}
                 leftIcon={<AntDesign name="phone" size={18} color="black" />}
             />
             <Input
                 label={'Correo electronico'}
-                // value={opstionSelected}
-                // onPressIn={() => setModalVisible(true)}
+                onChangeText={(email) => updateEmail(email)}
                 leftIcon={<MaterialCommunityIcons name="email-outline" size={24} color="black" />}
             />
             <Input
                 label={'Contraseña'}
-            // value={opstionSelected}
-            // onPressIn={() => setModalVisible(true)}
-            // leftIcon={<AntDesign name="caretdown" size={18} color="black" />}
+                onChangeText={(pass) => changePass({ _pass: pass })}
+                secureTextEntry={true}
             />
             <Input
                 label={'Confirma contraseña'}
-            // value={opstionSelected}
-            // onPressIn={() => setModalVisible(true)}
-            // leftIcon={<AntDesign name="caretdown" size={18} color="black" />}
+                onChangeText={(confiPass) => changePass({ _confiPass: confiPass })}
+                secureTextEntry={true}
             />
+
+            <View style={[globalstyles.bottom_element]}>
+                <Button
+                    title={'Siguiente'}
+                    onPress={() => crearCuenta()}
+                // buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
+                />
+            </View>
 
         </SafeAreaView>
     )

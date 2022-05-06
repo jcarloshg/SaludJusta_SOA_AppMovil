@@ -6,7 +6,7 @@ import { AutenticateContext } from '../HomeAutenticate/Context/AutenticateProvid
 
 export const useCrearCliente = ({ route, navigation }) => {
 
-    const { userClient } = useContext(AutenticateContext);
+    const { userClient, setUserClient } = useContext(AutenticateContext);
     const { theme } = useTheme();
 
     const [auxUserClient, setAuxUserClient] = useState(new User({}));
@@ -21,6 +21,7 @@ export const useCrearCliente = ({ route, navigation }) => {
             auxUserClient.age && auxUserClient.gender
         ) {
             navigation.navigate('CrearCuenta');
+            setUserClient(auxUserClient);
         }
     }
 
