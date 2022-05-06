@@ -8,7 +8,7 @@ export const Loggin = () => {
     return (
         <SafeAreaView style={globalstyles.container}>
             <Text>CrearCliente</Text>
-            <Text h3 style={{ fontSize: 18 }}>{title}</Text>
+            <Text h3 style={{ fontSize: 18 }}>CHALEEE</Text>
         </SafeAreaView>
     )
 }

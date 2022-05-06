@@ -1,23 +1,18 @@
 
 import { Button, Input, Text, useTheme } from '@rneui/themed'
 import React from 'react'
-import { SafeAreaView, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import { BoxSpace, SelectOption } from '../../../components'
 import { globalstyles } from '../../../styled-components'
-import { AntDesign } from '@expo/vector-icons';
 import { optionsGender } from './models/optionsGender '
+import { useCrearCliente } from './useCrearCliente'
 
 export const CrearCliente = () => {
 
-    const { theme } = useTheme();
-
-    const onTouchGeneroIcon = () => {
-        return (
-            <TouchableOpacity onPress={() => console.log("asdf")}>
-                <AntDesign name="caretdown" size={18} color="black" />
-            </TouchableOpacity>
-        )
-    }
+    const {
+        userClient, theme,
+        auxUserClient, updateName, updateLastName, updateAge, updateGender
+    } = useCrearCliente();
 
     return (
         <SafeAreaView style={[globalstyles.container]}>
@@ -30,27 +25,30 @@ export const CrearCliente = () => {
             <BoxSpace side={30} />
             <Input
                 label={"Nombres(s)"}
+                onChangeText={name => updateName(name)}
             />
 
             <Input
-                label={"Apellidos(s)"} />
+                label={"Apellidos(s)"}
+                onChangeText={lastName => updateLastName(lastName)} />
 
             <Input
                 label={"Edad"}
                 keyboardType='numeric'
                 maxLength={2}
-                onPressIn={() => console.log("laskdf")}
+                onChangeText={age => updateAge(age)}
             />
 
             <SelectOption
                 options={optionsGender}
                 label="Genero"
+                funcOnSelect={gender => updateGender(gender)}
             />
 
             <View style={[globalstyles.bottom_element]}>
                 <Button
                     title={'Siguiente'}
-                    onPress={() => console.log("Siguiente")}
+                    onPress={() => console.log(auxUserClient)}
                     buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
                 />
             </View>

@@ -1,9 +1,10 @@
-import { Input, Text } from '@rneui/themed'
+import { Divider, Input, Text, useTheme } from '@rneui/themed'
 import React, { useState } from 'react'
 import { Modal, TouchableOpacity, View } from 'react-native'
-import { colors, globalstyles } from '../../styled-components';
 import { AntDesign } from '@expo/vector-icons';
 import { BoxSpace } from '../BoxSpace/BoxSpace';
+import { styles } from './styles';
+import { globalstyles } from '../../styled-components';
 
 // options = [{
 //     "label": "HOMBRE",
@@ -13,23 +14,36 @@ import { BoxSpace } from '../BoxSpace/BoxSpace';
 
 export const SelectOption = ({
     options = [],
-    label = ''
+    label = '',
+    funcOnSelect = null,
 }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [opstionSelected, setOpstionSelected] = useState('');
+
+    const executeFuncOnSelect = (option) => {
+        try {
+            funcOnSelect(option.value);
+            setOpstionSelected(option.label);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
             <Input
                 label={label}
+                value={opstionSelected}
                 onPressIn={() => setModalVisible(true)}
                 rightIcon={<AntDesign name="caretdown" size={18} color="black" />}
             />
 
             <ModalOptions
                 modalVisible={modalVisible}
-                setModalVisible={() => setModalVisible(false)}
+                closeModal={() => setModalVisible(false)}
                 options={options}
+                executeFuncOnSelect={executeFuncOnSelect}
             />
 
         </>
@@ -38,54 +52,55 @@ export const SelectOption = ({
 
 
 export const ModalOptions = ({
-    modalVisible = modalVisible,
-    setModalVisible,
+    modalVisible,
+    closeModal,
     options = [],
+    executeFuncOnSelect,
 }) => {
 
-    const renderOption = ({ value = '', label = '', index }) => (
-        <>
-            <BoxSpace side={15} />
-            <TouchableOpacity onPress={() => console.log("asdf")} key={index}>
-                {/* <Text>{value}</Text> */}
-                <Text>{label}</Text>
+    const { theme } = useTheme();
+
+    const selectOption = (option) => {
+        executeFuncOnSelect(option);
+        closeModal();
+    }
+
+    const renderOption = (item, index) => (
+        <View key={index}>
+            <TouchableOpacity
+                style={styles.button_option}
+                onPress={() => selectOption(item)}>
+                <Text style={{ alignSelf: 'center' }}>{item.label}</Text>
             </TouchableOpacity>
-        </>
+            <Divider width={1} color={theme?.colors?.grey4} />
+        </View>
     );
 
     return (
-        <>
-            <Modal
-                visible={modalVisible}
-                transparent={true}
-                animationType={'slide'}
-            >
-                <TouchableOpacity
-                    style={[globalstyles.container_flex, {
-                        flex: 1,
-                        backgroundColor: "rgba(0,0,0,0.6)",
-                    }]}
-                    onPress={() => setModalVisible()}
-                />
+        <Modal
+            visible={modalVisible}
+            transparent={true}
+            animationType={'slide'}
+        >
+            <TouchableOpacity
+                style={styles.zone_close_modal}
+                onPress={() => closeModal()}
+            />
 
-                <View style={[{
-                    backgroundColor: colors.WHITE_EEEEEE,
-                    padding: 15,
-                    paddingVertical: 30,
-                    borderRadius: 10,
-                }]}>
+            <View style={[styles.zone_options_modal]}>
 
-                    <Text h4>Selecciona una opcion</Text>
-                    {
-                        options.length === 0
-                            ? (<Text>No hay opciones</Text>)
-                            : options.map(item => renderOption(item))
-                    }
+                <Text h4>Selecciona una opcion</Text>
 
-                </View>
+                <BoxSpace side={15} />
+                {
+                    options.length === 0
+                        ? (<Text>No hay opciones</Text>)
+                        : options.map((item, index) => renderOption(item, index))
+                }
 
-            </Modal>
-        </>
+            </View>
 
-    )
+        </Modal>
+    );
+
 }

@@ -8,5 +8,7 @@ export const themeProvider = createTheme({
         PRIMARY: "#028174",
         SECONDARY: "#0AB68B",
         TERTIARY: "#92DE8B",
+
+        BACKGROUND: "#FFE3B3",
     }
 });

@@ -1,9 +1,6 @@
-import { Button, Divider } from '@rneui/base';
-import { useTheme } from '@rneui/themed';
+import { Divider, useTheme } from '@rneui/themed';
 import React from 'react'
 import { Image, View } from 'react-native';
-import { colors } from '../../styled-components';
-import { ButtonTouchable } from '../ButtonTouchable/ButtonTouchable';
 
 export const TopBar = () => {
 
@@ -16,7 +13,7 @@ export const TopBar = () => {
             <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }]}>
                 <Image style={{ height: 100, width: 100 }} source={logo} />
             </View>
-            <Divider />
+            <Divider width={2} color={theme?.colors?.greyOutline} />
         </View>
     )
 }
