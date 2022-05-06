@@ -4,7 +4,7 @@ import User from '../../../models/entities/User.entitie';
 import { gerder } from '../../../utilities/constFromEntities/Gender'
 import { AutenticateContext } from '../HomeAutenticate/Context/AutenticateProvider';
 
-export const useCrearCliente = () => {
+export const useCrearCliente = ({ route, navigation }) => {
 
     const { userClient } = useContext(AutenticateContext);
     const { theme } = useTheme();
@@ -15,8 +15,18 @@ export const useCrearCliente = () => {
     const updateAge = (age) => setAuxUserClient(auxUserClient => ({ ...auxUserClient, age: age }));
     const updateGender = (gender) => setAuxUserClient(auxUserClient => ({ ...auxUserClient, gender: gender }));
 
+    const siguiente = () => {
+        if (
+            auxUserClient.name && auxUserClient.lastName &&
+            auxUserClient.age && auxUserClient.gender
+        ) {
+            navigation.navigate('CrearCuenta');
+        }
+    }
+
     return {
         userClient, theme,
-        auxUserClient, updateName, updateLastName, updateAge, updateGender
+        auxUserClient, updateName, updateLastName, updateAge, updateGender,
+        siguiente
     };
 }

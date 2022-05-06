@@ -1,10 +1,10 @@
+
 import { Divider, Input, Text, useTheme } from '@rneui/themed'
 import React, { useState } from 'react'
 import { Modal, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { BoxSpace } from '../BoxSpace/BoxSpace';
 import { styles } from './styles';
-import { globalstyles } from '../../styled-components';
 
 // options = [{
 //     "label": "HOMBRE",

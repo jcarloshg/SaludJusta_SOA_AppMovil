@@ -7,19 +7,19 @@ import { globalstyles } from '../../../styled-components'
 import { optionsGender } from './models/optionsGender '
 import { useCrearCliente } from './useCrearCliente'
 
-export const CrearCliente = () => {
+export const CrearCliente = ({ route, navigation }) => {
 
     const {
         userClient, theme,
-        auxUserClient, updateName, updateLastName, updateAge, updateGender
-    } = useCrearCliente();
+        auxUserClient, updateName, updateLastName, updateAge, updateGender,
+        siguiente
+    } = useCrearCliente({ route, navigation });
 
     return (
         <SafeAreaView style={[globalstyles.container]}>
 
             <BoxSpace side={15} />
-            <Text h3 >Crear nueva cliente</Text>
-            {/* <BoxSpace side={5} /> */}
+            <Text h3>Ingresa tus datos</Text>
             <Text>Completa los campos siguientes</Text>
 
             <BoxSpace side={30} />
@@ -48,7 +48,7 @@ export const CrearCliente = () => {
             <View style={[globalstyles.bottom_element]}>
                 <Button
                     title={'Siguiente'}
-                    onPress={() => console.log(auxUserClient)}
+                    onPress={() => siguiente()}
                     buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
                 />
             </View>

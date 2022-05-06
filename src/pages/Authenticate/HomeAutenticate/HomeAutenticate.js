@@ -2,6 +2,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
 import { CrearCliente } from '../CrearCliente/CrearCliente'
+import { CrearCuenta } from '../CrearCuenta/CrearCuenta';
 import { Loggin } from '../Loggin/Loggin'
 import { AutenticateProvider } from './Context/AutenticateProvider';
 
@@ -12,6 +13,7 @@ export const HomeAutenticate = () => {
 		<AutenticateProvider>
 			<Stack.Navigator initialRouteName="Loggin">
 				<Stack.Screen name="CrearCliente" component={CrearCliente} options={{ headerShown: false }} />
+				<Stack.Screen name="CrearCuenta" component={CrearCuenta} options={{ headerShown: false }} />
 				<Stack.Screen name="Loggin" component={Loggin} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</AutenticateProvider>
