@@ -1,7 +1,7 @@
 import { useTheme } from '@rneui/themed';
 import React, { useContext, useState } from 'react'
+import Toast from 'react-native-toast-message';
 import User from '../../../models/entities/User.entitie';
-import { gerder } from '../../../utilities/constFromEntities/Gender'
 import { AutenticateContext } from '../HomeAutenticate/Context/AutenticateProvider';
 
 export const useCrearCliente = ({ route, navigation }) => {
@@ -22,6 +22,12 @@ export const useCrearCliente = ({ route, navigation }) => {
         ) {
             navigation.navigate('CrearCuenta');
             setUserClient(auxUserClient);
+        } else {
+            Toast.show({
+                type: 'error',
+                text1: "Campos vacios",
+                text2: "Debes de conpletar todos los campos",
+            });
         }
     }
 

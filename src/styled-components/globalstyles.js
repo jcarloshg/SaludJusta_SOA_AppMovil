@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Dimensions } from 'react-native';
 import { colors } from './colors';
 
-const height = Dimensions.get('window').height;
+const height = Dimensions.get('window').height - 25;
 
 export const globalstyles = StyleSheet.create({
 

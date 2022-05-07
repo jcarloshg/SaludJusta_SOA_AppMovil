@@ -1,3 +1,4 @@
+import { useTheme } from '@rneui/themed';
 import React, { useContext, useEffect, useState } from 'react'
 import Toast from 'react-native-toast-message';
 import User from '../../../models/entities/User.entitie';
@@ -7,6 +8,7 @@ import { createAccount, existAccount } from './services';
 export const useCrearCuenta = ({ route, navigation }) => {
 
     const { userClient, setUserClient } = useContext(AutenticateContext);
+    const { theme } = useTheme();
 
     const [auxUserClient, setAuxUserClient] = useState(new User({}));
     const updatePhoneNumber = (phoneNumber) => setAuxUserClient(userClient => ({ ...userClient, phoneNumber: phoneNumber }))
@@ -32,46 +34,52 @@ export const useCrearCuenta = ({ route, navigation }) => {
 
     const crearCuenta = () => {
 
+        // console.log(userClient);
+        // console.log(auxUserClient);
+
         if (auxUserClient.phoneNumber && auxUserClient.email && auxUserClient.password) {
-            setUserClient(
-                userClient => ({
-                    ...userClient,
-                    phoneNumber: auxUserClient.phoneNumber,
-                    email: auxUserClient.email,
-                    password: auxUserClient.password,
-                })
-            );
+            setUserClient(userClient => ({
+                ...userClient,
+                phoneNumber: auxUserClient.phoneNumber,
+                email: auxUserClient.email,
+                password: auxUserClient.password,
+            }));
         } else {
             Toast.show({
                 type: 'error',
                 text1: "Campos vacios",
                 text2: "Debes de conpletar todos los campos",
-                // position: 'bottom'
             });
         }
     }
 
     useEffect(() => {
 
-        if (!auxUserClient.phoneNumber && !auxUserClient.email && !auxUserClient.password) return;
-
         (async () => {
+
+            if (!auxUserClient.phoneNumber || !auxUserClient.email || !auxUserClient.password) return;
 
             const resExistAccount = await existAccount(userClient.email);
             if (resExistAccount.isOk === true) {
-                console.log("resExistAccount - existe cuenta");
+                Toast.show({
+                    type: 'error',
+                    text1: "Este correo ya existe",
+                    text2: "Debes ocupar otro correo",
+                });
                 return;
             }
 
             const resCreateAccount = await createAccount(userClient);
             if (resCreateAccount.isOk === false) {
-                // todo - no se creo user
-                console.log(`[resCreateAccount] -> `, resCreateAccount);
+                Toast.show({
+                    type: 'error',
+                    text1: "No se puede crear la cuenta",
+                    text2: resCreateAccount.message,
+                });
                 return;
             }
 
-            // todo pantalla login :)
-
+            navigation.navigate('PageWelcome');
 
         })();
 
@@ -79,12 +87,12 @@ export const useCrearCuenta = ({ route, navigation }) => {
     }, [userClient]);
 
 
-
     return {
         updatePhoneNumber,
         updateEmail,
         updatePassword,
         changePass,
-        crearCuenta
+        crearCuenta,
+        theme
     };
 }

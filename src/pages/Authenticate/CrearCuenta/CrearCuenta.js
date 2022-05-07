@@ -13,7 +13,8 @@ export const CrearCuenta = ({ route, navigation }) => {
         updateEmail,
         updatePassword,
         changePass,
-        crearCuenta
+        crearCuenta,
+        theme
     } = useCrearCuenta({ route, navigation });
 
     return (
@@ -28,6 +29,7 @@ export const CrearCuenta = ({ route, navigation }) => {
             <Input
                 label={'Número de telefono'}
                 keyboardType='numeric'
+                maxLength={10}
                 onChangeText={(number) => updatePhoneNumber(number)}
                 leftIcon={<AntDesign name="phone" size={18} color="black" />}
             />
@@ -51,7 +53,7 @@ export const CrearCuenta = ({ route, navigation }) => {
                 <Button
                     title={'Siguiente'}
                     onPress={() => crearCuenta()}
-                // buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
+                    buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
                 />
             </View>
 
