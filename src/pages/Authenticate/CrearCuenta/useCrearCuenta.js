@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AlertButtons } from '../../../components/AlertButtons/AlertButtons';
+import Toast from 'react-native-toast-message';
 import User from '../../../models/entities/User.entitie';
 import { AutenticateContext } from '../HomeAutenticate/Context/AutenticateProvider';
 import { createAccount, existAccount } from './services';
@@ -32,13 +32,7 @@ export const useCrearCuenta = ({ route, navigation }) => {
 
     const crearCuenta = () => {
 
-        AlertButtons({
-            title: 'Debes de llenar todos los campo',
-            funcPrimary: () => { },
-            labelPrimary: 'Aceptar'
-        });
-
-        if (auxUserClient.phoneNumber && auxUserClient.email) {
+        if (auxUserClient.phoneNumber && auxUserClient.email && auxUserClient.password) {
             setUserClient(
                 userClient => ({
                     ...userClient,
@@ -48,15 +42,19 @@ export const useCrearCuenta = ({ route, navigation }) => {
                 })
             );
         } else {
-            AlertButtons({
-                title: 'Debes de llenar todos los campo',
-                funcPrimary: () => { },
-                labelPrimary: 'Aceptar'
+            Toast.show({
+                type: 'error',
+                text1: "Campos vacios",
+                text2: "Debes de conpletar todos los campos",
+                // position: 'bottom'
             });
         }
     }
 
     useEffect(() => {
+
+        if (!auxUserClient.phoneNumber && !auxUserClient.email && !auxUserClient.password) return;
+
         (async () => {
 
             const resExistAccount = await existAccount(userClient.email);
@@ -66,7 +64,14 @@ export const useCrearCuenta = ({ route, navigation }) => {
             }
 
             const resCreateAccount = await createAccount(userClient);
-            console.log(`[resCreateAccount] -> `, resCreateAccount);
+            if (resCreateAccount.isOk === false) {
+                // todo - no se creo user
+                console.log(`[resCreateAccount] -> `, resCreateAccount);
+                return;
+            }
+
+            // todo pantalla login :)
+
 
         })();
 

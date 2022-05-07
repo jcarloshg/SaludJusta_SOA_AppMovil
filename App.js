@@ -1,6 +1,7 @@
 import React from 'react';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Toast from 'react-native-toast-message';
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from '@rneui/themed';
 import { themeProvider } from './src/contexts';
@@ -32,6 +33,8 @@ export default function App() {
 					<Stack.Screen name="HomeLandPage" component={HomeLandPage} options={{ headerShown: false }} />
 					<Stack.Screen name="HomeAutenticate" component={HomeAutenticate} options={{ headerShown: false }} />
 				</Stack.Navigator>
+
+				<Toast />
 
 			</NavigationContainer>
 		</ThemeProvider>
