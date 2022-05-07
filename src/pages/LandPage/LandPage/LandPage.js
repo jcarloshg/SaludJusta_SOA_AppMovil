@@ -34,8 +34,6 @@ export const LandPage = ({ route, navigation }) => {
 
     return (
         <>
-            <TopBar />
-
             <SafeAreaView style={globalstyles.container_flex}>
 
                 <Button
