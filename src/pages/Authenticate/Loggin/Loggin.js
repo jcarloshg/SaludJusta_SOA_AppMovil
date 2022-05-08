@@ -13,6 +13,7 @@ export const Loggin = ({ route, navigation }) => {
     const { theme } = useTheme();
 
     const {
+        isLoading,
         iniciarSesion,
         updateLoggin
     } = useLoggin({ route, navigation });
@@ -43,6 +44,7 @@ export const Loggin = ({ route, navigation }) => {
                         <BoxSpace side={30} />
                         <Button
                             title={'Iniciar sesion'}
+                            loading={isLoading}
                             onPress={() => iniciarSesion()}
                             buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
                         />

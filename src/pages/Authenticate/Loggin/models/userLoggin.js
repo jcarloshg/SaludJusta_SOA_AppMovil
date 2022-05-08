@@ -1,5 +1,5 @@
 
-export const loggin = {
+export const userLoggin = {
     email: "",
     pass: ""
 }

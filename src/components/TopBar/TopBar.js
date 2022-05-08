@@ -1,6 +1,7 @@
 import { Divider, useTheme } from '@rneui/themed';
 import React from 'react'
 import { Image, View } from 'react-native';
+import { globalstyles } from '../../styled-components';
 
 export const TopBar = () => {
 
@@ -9,7 +10,7 @@ export const TopBar = () => {
     const { theme } = useTheme();
 
     return (
-        <View style={{ padding: 10 }}>
+        <View style={{ paddingHorizontal: 10 }}>
             <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }]}>
                 <Image style={{ height: 100, width: 100 }} source={logo} />
             </View>
