@@ -13,7 +13,7 @@ export const TopBar = () => {
             <View style={[{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }]}>
                 <Image style={{ height: 100, width: 100 }} source={logo} />
             </View>
-            <Divider width={2} color={theme?.colors?.greyOutline} />
+            <Divider width={1.5} color={theme?.colors?.greyOutline} />
         </View>
     )
 }

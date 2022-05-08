@@ -1,48 +1,54 @@
 
-import { Button, Input, Text } from '@rneui/themed'
+import { Button, Card, Input, Text } from '@rneui/themed'
 import React from 'react'
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, View } from 'react-native'
-import { BoxSpace } from '../../../components'
+import { BoxSpace, TopBar } from '../../../components'
 import { globalstyles } from '../../../styled-components'
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@rneui/themed';
+import { useLoggin } from './useLoggin'
 
 export const Loggin = ({ route, navigation }) => {
 
     const { theme } = useTheme();
 
+    const {
+        iniciarSesion,
+        updateLoggin
+    } = useLoggin({ route, navigation });
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
+            <TopBar />
             <ScrollView>
-                <SafeAreaView style={globalstyles.container}>
+                <SafeAreaView style={[globalstyles.container, { justifyContent: 'center' }]}>
+                    <Card>
 
-                    <BoxSpace side={15} />
-                    <Text h3 style={{ fontSize: 18 }}>Iniciar sesion</Text>
-                    <Text>Debes para poder generar citas</Text>
+                        <Text h3 style={{ fontSize: 18, textAlign: 'center' }}>Iniciar sesion</Text>
+                        <Text style={{ textAlign: 'center' }}>Debes para poder generar citas</Text>
 
-                    <BoxSpace side={30} />
-                    <Input
-                        label={'Correo electronico'}
-                        // onChangeText={(email) => updateEmail(email)}
-                        leftIcon={<MaterialCommunityIcons name="email-outline" size={24} color="black" />}
-                    />
-                    <Input
-                        label={'Contraseña'}
-                        // onChangeText={(pass) => changePass({ _pass: pass })}
-                        secureTextEntry={true}
-                        leftIcon={<Ionicons name="md-key-outline" size={24} color="black" />}
-                    />
+                        <BoxSpace side={30} />
+                        <Input
+                            label={'Correo electronico'}
+                            onChangeText={(email) => updateLoggin('email', email)}
+                            leftIcon={<MaterialCommunityIcons name="email-outline" size={24} color="black" />}
+                        />
+                        <Input
+                            label={'Contraseña'}
+                            onChangeText={(pass) => updateLoggin('pass', pass)}
+                            secureTextEntry={true}
+                            leftIcon={<Ionicons name="md-key-outline" size={24} color="black" />}
+                        />
 
-                    <View style={[globalstyles.bottom_element]}>
+                        <BoxSpace side={30} />
                         <Button
                             title={'Iniciar sesion'}
-                            // onPress={() => crearCuenta()}
+                            onPress={() => iniciarSesion()}
                             buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
                         />
-                    </View>
-
+                    </Card>
                 </SafeAreaView>
             </ScrollView>
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView >
     )
 }
