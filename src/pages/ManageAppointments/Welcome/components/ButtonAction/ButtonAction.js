@@ -13,6 +13,8 @@ export const ButtonAction = ({
 
     const { theme } = useTheme();
 
+    console.log(theme.colors.grey3);
+
     return (
         <TouchableOpacity onPress={() => funcNvidate()}>
             <Card>
