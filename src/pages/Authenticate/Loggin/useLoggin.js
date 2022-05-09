@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { userLoggin } from './models/userLoggin'
 import { loggin } from './services/loggin';
 import Toast from 'react-native-toast-message';
+import { DataContext } from '../../../contexts/DataProvider/DataProvider';
+import User from '../../../models/entities/User.entitie';
 
 
 export const useLoggin = ({ route, navigation }) => {
+
+    const { dataProvider, setDataProvider } = useContext(DataContext);
 
     const [auxLoggin, setAuxLoggin] = useState(userLoggin);
     const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +33,6 @@ export const useLoggin = ({ route, navigation }) => {
         }
 
         const resLoggin = await loggin(auxLoggin.email, auxLoggin.pass);
-
         if (resLoggin.isOk == false) {
             Toast.show({
                 type: 'error',
@@ -40,9 +43,13 @@ export const useLoggin = ({ route, navigation }) => {
             return;
         }
 
+        const auxClient = new User(resLoggin.data);
 
-        console.log(resLoggin);
         setIsLoading(false);
+
+        setDataProvider(dataProvider => ({ ...dataProvider, userClient: auxClient }));
+
+        navigation.navigate('HomeLandPage', { screen: 'LandPage' });
     }
 
     return {

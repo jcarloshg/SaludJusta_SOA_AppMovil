@@ -1,0 +1,27 @@
+import { useTheme } from '@rneui/themed';
+import React, { useContext, useEffect, useState } from 'react'
+import { DataContext } from '../../contexts/DataProvider/DataProvider';
+import User from '../../models/entities/User.entitie';
+
+export const useTopBar = () => {
+
+    const logo = require('../../assets/salud_justa_logo.png');
+
+    const { theme } = useTheme();
+
+    const { dataProvider, setDataProvider } = useContext(DataContext);
+
+    const [userClient, setUserClient] = useState(new User({}));
+
+    useEffect(() => {
+        setUserClient(dataProvider.userClient);
+        return () => { }
+    }, [dataProvider])
+
+
+    return {
+        logo,
+        theme,
+        userClient
+    };
+}
