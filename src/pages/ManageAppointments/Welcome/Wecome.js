@@ -1,18 +1,32 @@
-import { Text } from '@rneui/themed'
+import { Text, useTheme } from '@rneui/themed'
 import React from 'react'
-import { KeyboardAvoidingView, SafeAreaView, ScrollView } from 'react-native'
+import { KeyboardAvoidingView, SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native'
 import { BoxSpace } from '../../../components'
-import { globalstyles } from '../../../styled-components'
+import { globalstyles } from '../../../styled-components';
+import { ButtonAction } from './components/ButtonAction/ButtonAction';
 
 export const Wecome = ({ route, navigation }) => {
+
+    const { theme } = useTheme();
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
             <ScrollView>
-                <SafeAreaView style={[globalstyles.container]}>
+                <SafeAreaView style={[globalstyles.container_flex]}>
 
                     <BoxSpace side={15} />
                     <Text h3>Bienvenido</Text>
                     <Text>¿Qué es lo que deaseas hacer?</Text>
+
+                    <BoxSpace side={15} />
+                    <ButtonAction
+                        label='Deseo generar una nueva cita'
+                        nameIcon='addfile'
+                    />
+                    <ButtonAction
+                        label='Ver mis citas'
+                        nameIcon='calendar'
+                    />
 
                 </SafeAreaView>
             </ScrollView>
