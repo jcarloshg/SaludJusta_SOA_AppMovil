@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Toast from 'react-native-toast-message';
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from '@rneui/themed';
-import { themeProvider } from './src/contexts';
+import { DataProvider, themeProvider } from './src/contexts';
 import { HomeLandPage } from './src/pages/LandPage/HomeLandPage/HomeLandPage';
 import { HomeAutenticate } from './src/pages/Authenticate/HomeAutenticate/HomeAutenticate';
 
@@ -24,19 +24,21 @@ export default function App() {
 	const myTheme = themeProvider;
 
 	return (
-		<ThemeProvider theme={myTheme}>
-			<NavigationContainer theme={theme}>
+		<DataProvider>
+			<ThemeProvider theme={myTheme}>
+				<NavigationContainer theme={theme}>
 
-				<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
+					<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
 
-				<Stack.Navigator initialRouteName="HomeLandPage">
-					<Stack.Screen name="HomeLandPage" component={HomeLandPage} options={{ headerShown: false }} />
-					<Stack.Screen name="HomeAutenticate" component={HomeAutenticate} options={{ headerShown: false }} />
-				</Stack.Navigator>
+					<Stack.Navigator initialRouteName="HomeLandPage">
+						<Stack.Screen name="HomeLandPage" component={HomeLandPage} options={{ headerShown: false }} />
+						<Stack.Screen name="HomeAutenticate" component={HomeAutenticate} options={{ headerShown: false }} />
+					</Stack.Navigator>
 
-				<Toast />
+					<Toast />
 
-			</NavigationContainer>
-		</ThemeProvider>
+				</NavigationContainer>
+			</ThemeProvider>
+		</DataProvider>
 	);
 }
