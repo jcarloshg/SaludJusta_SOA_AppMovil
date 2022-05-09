@@ -1,5 +1,6 @@
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useThemeMode } from '@rneui/themed';
 import React from 'react'
 import { CrearCliente } from '../CrearCliente/CrearCliente'
 import { CrearCuenta } from '../CrearCuenta/CrearCuenta';

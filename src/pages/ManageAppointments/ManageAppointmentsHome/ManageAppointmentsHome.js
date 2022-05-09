@@ -7,6 +7,7 @@ import { CreateAppointmentHome } from '../CreateAppointmentHome/CreateAppointmen
 const Stack = createNativeStackNavigator();
 
 export const ManageAppointmentsHome = ({ route, navigation }) => {
+
     return (
         <>
             <TopBar />

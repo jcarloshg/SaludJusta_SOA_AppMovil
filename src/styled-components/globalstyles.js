@@ -45,6 +45,12 @@ export const globalstyles = StyleSheet.create({
         padding: 15
     },
 
+    container_bottom_TopBar: {
+        // flex: 1,
+        height: height - 100,
+        padding: 15
+    },
+
     bottom_element: {
         position: "absolute",
         bottom: 45,
