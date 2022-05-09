@@ -1,5 +1,5 @@
 
 export const userLoggin = {
-    email: "",
-    pass: ""
+    email: "carlosj12336@gmail.com",
+    pass: "jose123"
 }
