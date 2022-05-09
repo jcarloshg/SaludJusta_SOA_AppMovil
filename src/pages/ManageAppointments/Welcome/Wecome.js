@@ -9,6 +9,8 @@ export const Wecome = ({ route, navigation }) => {
 
     const { theme } = useTheme();
 
+    const goToCreateAppointment = () => navigation.navigate('CreateAppointmentHome');
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
             <ScrollView>
@@ -22,6 +24,7 @@ export const Wecome = ({ route, navigation }) => {
                     <ButtonAction
                         label='Deseo generar una nueva cita'
                         nameIcon='addfile'
+                        funcNvidate={goToCreateAppointment}
                     />
                     <ButtonAction
                         label='Ver mis citas'
