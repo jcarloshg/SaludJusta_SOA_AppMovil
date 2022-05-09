@@ -64,13 +64,28 @@ export const LandPage = ({ route, navigation }) => {
 
                         <BoxSpace side={30} />
                     </View>
+
+                    <View>
+                        <Text h4>Noticias</Text>
+                        {
+                            noticias.map((noticia, index) => (
+                                <CardNoticia
+                                    key={index}
+                                    title={noticia.title}
+                                    body={noticia.body}
+                                />
+                            ))
+                        }
+
+                        <BoxSpace side={30} />
+                    </View>
                 </ScrollView>
             </SafeAreaView >
 
             <Button
                 title={'Quiero generar una cita'}
                 onPress={() => console.log("Crear una cita")}
-                buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
+                buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY, height: 50 }}
             />
         </>
     )

@@ -7,6 +7,7 @@ import { ThemeProvider } from '@rneui/themed';
 import { DataProvider, themeProvider } from './src/contexts';
 import { HomeLandPage } from './src/pages/LandPage/HomeLandPage/HomeLandPage';
 import { HomeAutenticate } from './src/pages/Authenticate/HomeAutenticate/HomeAutenticate';
+import { ManageAppointmentsHome } from './src/pages/ManageAppointments/ManageAppointmentsHome/ManageAppointmentsHome';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ export default function App() {
 					<Stack.Navigator initialRouteName="HomeLandPage">
 						<Stack.Screen name="HomeLandPage" component={HomeLandPage} options={{ headerShown: false }} />
 						<Stack.Screen name="HomeAutenticate" component={HomeAutenticate} options={{ headerShown: false }} />
+						<Stack.Screen name="ManageAppointmentsHome" component={ManageAppointmentsHome} options={{ headerShown: false }} />
 					</Stack.Navigator>
 
 					<Toast />

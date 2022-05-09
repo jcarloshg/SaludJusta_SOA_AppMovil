@@ -18,7 +18,6 @@ export const CrearCuenta = ({ route, navigation }) => {
     } = useCrearCuenta({ route, navigation });
 
     return (
-
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
             <ScrollView>
                 <SafeAreaView style={[globalstyles.container]}>

@@ -49,7 +49,7 @@ export const useLoggin = ({ route, navigation }) => {
 
         setDataProvider(dataProvider => ({ ...dataProvider, userClient: auxClient }));
 
-        navigation.navigate('HomeLandPage', { screen: 'LandPage' });
+        navigation.navigate('ManageAppointmentsHome', { screen: 'Wecome' });
     }
 
     return {
