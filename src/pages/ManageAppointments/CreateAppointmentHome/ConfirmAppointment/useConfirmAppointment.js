@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../../../../contexts/DataProvider/DataProvider";
 import Appointment from "../../../../models/entities/Appointment.entitie";
 import ExamCatalogItem from "../../../../models/entities/ExamCatalogItem.entitie";
 import User from "../../../../models/entities/User.entitie";
 import { updateAppointment } from "./service/updateAppointment";
+import Toast from 'react-native-toast-message';
 
 export const useConfirmAppointment = ({ route, navigation }) => {
 
@@ -23,15 +24,34 @@ export const useConfirmAppointment = ({ route, navigation }) => {
             appointment.idAppointment
         );
 
+        if (res.isOk === false) {
+            Toast.show({
+                type: 'error',
+                text1: `Error [${res.code}]`,
+                text2: res.message,
+            });
+            setIsLoading(false);
+            return;
+        }
+
+        Toast.show({
+            type: 'success',
+            text1: `Cita registrata correctamente`,
+            text2: "Puedes ver tu cita en el apartada de 'Ver mis citas'",
+            visibilityTime: 6000,
+        });
+
         setIsLoading(false);
-        console.log(res);
+
+        navigation.navigate('ManageAppointmentsHome', { screen: 'Wecome' });
     }
 
     return {
         examCatalogItem,
         appointment,
         userClient,
-        confirmar
+        confirmar,
+        isLoading,
     };
 }
 

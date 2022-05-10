@@ -14,7 +14,8 @@ export const ConfirmAppointment = ({ route, navigation }) => {
         examCatalogItem,
         appointment,
         userClient,
-        confirmar
+        confirmar,
+        isLoading,
     } = useConfirmAppointment({ route, navigation });
 
     const rederData = (label, data) => {
@@ -73,6 +74,7 @@ export const ConfirmAppointment = ({ route, navigation }) => {
                 <Button
                     title={'Confirmar'}
                     onPress={() => confirmar()}
+                    loading={isLoading}
                     buttonStyle={{ backgroundColor: colors.PRIMARY }}
                 />
 
