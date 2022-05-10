@@ -8,5 +8,5 @@ import { months } from "./monthsArry"
  * @returns
  */
 export const dateToString = (date) => {
-    return `${days[date.getDay()]} ${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`
+    return `${days[date.getDay()]} ${date.getDate()} de ${months[date.getMonth()]}, ${date.getFullYear()}`
 }

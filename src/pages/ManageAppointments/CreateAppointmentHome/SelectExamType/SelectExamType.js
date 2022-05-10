@@ -36,21 +36,6 @@ export const SelectExamType = ({ route, navigation }) => {
 
                     <BoxSpace side={30} />
                     <ScrollView>
-                        <View>
-                            <Text style={{ color: "#86939e" }}>
-                                Para cualquier prueba de laboratorio, usted deberá seguir estas instruccines:
-                            </Text>
-                            <BoxSpace side={15} />
-                            <Text style={{ color: "#86939e", paddingLeft: 15 }}>
-                                • No comer en forma excesiva el día antes de la prueba
-                            </Text>
-                            <BoxSpace side={15} />
-                            <Text style={{ color: "#86939e", paddingLeft: 15 }}>
-                                • Siga todas las instrucciones que le dé su profesional de la salud
-                            </Text>
-                        </View>
-
-                        <BoxSpace side={30} />
                         {
                             examCatalogArr.length === 0
                                 ? renerNotExams()

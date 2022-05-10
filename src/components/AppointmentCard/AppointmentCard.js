@@ -9,14 +9,16 @@ import { hhmmssToString } from '../../utilities/date/hhmmssToString';
 
 const defaultAppointment = new Appointment({});
 
-export const AppointmentCard = ({ appointment = defaultAppointment }) => {
+export const AppointmentCard = ({
+    appointment = defaultAppointment,
+    funcOnPress = () => console.log("[AppointmentCard] not function")
+}) => {
 
     const date = dateToString(new Date(appointment.date));
     const time = timeToString(hhmmssToString(appointment.time));
 
-
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => funcOnPress()}>
             <Card>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text h4 h4Style={{ fontSize: 12 }}>{date}</Text>

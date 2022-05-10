@@ -1,6 +1,8 @@
+import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import React, { useEffect, useState } from 'react'
 import { AppointmentAdapter } from '../../../../adapters/Appointment.adapter';
 import ExamCatalogItem from '../../../../models/entities/ExamCatalogItem.entitie';
+import { dateToStringYYYYMMDD } from '../../../../utilities/date/dateToStringYYYYMMDD';
 import { getAvailableHoursDay } from './service/getAvailableHoursDay';
 
 export const useSelectDate = ({ route, navigation }) => {
@@ -9,11 +11,31 @@ export const useSelectDate = ({ route, navigation }) => {
 
     const [appointmentsFree, setAppointmentsFree] = useState([]);
 
-    useEffect(() => {
+    const [date, setDate] = useState(new Date());
 
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate;
+        setDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        DateTimePickerAndroid.open({
+            value: date,
+            onChange,
+            mode: currentMode,
+            is24Hour: true
+        })
+    };
+
+    const showDatepicker = () => showMode('date');
+
+    const showTimepicker = () => showMode('time');
+
+    useEffect(() => {
         (async () => {
 
-            const resGetAvailableHoursDay = await getAvailableHoursDay(examCatalogItem.typeExam, "2022-04-21");
+            const resGetAvailableHoursDay =
+                await getAvailableHoursDay(examCatalogItem.typeExam, dateToStringYYYYMMDD(date));
 
             if (resGetAvailableHoursDay.isOk === true)
                 setAppointmentsFree(
@@ -26,14 +48,23 @@ export const useSelectDate = ({ route, navigation }) => {
                 setAppointmentsFree([]);
 
         })();
-
         return () => { }
-    }, []);
+    }, [date]);
 
+    const goToConfirmAppointment = (appointment) => {
+        navigation.navigate(
+            "ConfirmAppointment",
+            {
+                examCatalogItem: examCatalogItem,
+                appointment: appointment,
+            });
+    }
 
     return {
         examCatalogItem,
-        appointmentsFree
+        appointmentsFree,
+        showDatepicker, date,
+        goToConfirmAppointment
     };
 }
 

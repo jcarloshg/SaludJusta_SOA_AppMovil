@@ -1,4 +1,5 @@
-import { Button, Text, useThemeMode } from '@rneui/themed'
+import { Card } from '@rneui/base'
+import { Button, Divider, Text, useThemeMode } from '@rneui/themed'
 import React from 'react'
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, View } from 'react-native'
 import { BoxSpace } from '../../../../components'
@@ -15,9 +16,9 @@ export const ConfirmPersonalData = ({ route, navigation }) => {
     const rederData = (label, data) => {
         return (
             <View style={{ flexDirection: 'row' }}>
+                <Text h4 h4Style={{ fontSize: 14, textAlign: 'right' }} style={{ flex: 3 }}>{label}</Text>
                 <BoxSpace side={15} />
-                <Text h4 h4Style={{ fontSize: 14 }} style={{ flex: 2 }}>{label}</Text>
-                <Text style={{ flex: 4 }}>{data}</Text>
+                <Text style={{ flex: 3 }}>{data}</Text>
             </View>
         )
     }
@@ -34,8 +35,7 @@ export const ConfirmPersonalData = ({ route, navigation }) => {
                     {/* <BoxSpace side={45} />
                     {rederData('ID cliente', userClient.idUser)} */}
 
-                    <BoxSpace side={30} />
-                    <View>
+                    <Card>
                         <Text h4 h4Style={{ fontSize: 18 }}>Datos personales</Text>
                         <BoxSpace side={15} />
                         {rederData('Nombre(s)', userClient.name)}
@@ -43,17 +43,18 @@ export const ConfirmPersonalData = ({ route, navigation }) => {
                         {rederData('Edad', userClient.age)}
                         {rederData('Genero', userClient.gender)}
 
-                    </View>
+                        <BoxSpace side={15} />
+                        <Divider />
+                        <BoxSpace side={15} />
 
-                    <BoxSpace side={30} />
-                    <View>
                         <Text h4 h4Style={{ fontSize: 18 }}>Datos de contacto</Text>
                         <BoxSpace side={15} />
                         {rederData('Numero de telefono', userClient.phoneNumber)}
                         {rederData('Correo electronico', userClient.email)}
 
-                    </View>
+                    </Card>
 
+                    <BoxSpace side={30} />
                     <View style={[globalstyles.bottom_element]}>
                         <Button
                             title={'Siguiente'}
@@ -64,6 +65,6 @@ export const ConfirmPersonalData = ({ route, navigation }) => {
 
                 </SafeAreaView>
             </ScrollView >
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView >
     )
 }
