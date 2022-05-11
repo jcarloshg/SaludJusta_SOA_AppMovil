@@ -11,6 +11,8 @@ export const Wecome = ({ route, navigation }) => {
 
     const goToCreateAppointment = () => navigation.navigate('CreateAppointmentHome');
 
+    const goToVerCitasHome = () => navigation.navigate('VerCitasHome');
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
             <ScrollView>
@@ -29,6 +31,7 @@ export const Wecome = ({ route, navigation }) => {
                     <ButtonAction
                         label='Ver mis citas'
                         nameIcon='calendar'
+                        funcNvidate={goToVerCitasHome}
                     />
 
                 </SafeAreaView>
