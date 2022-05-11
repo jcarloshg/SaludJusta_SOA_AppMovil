@@ -8,6 +8,7 @@ import { WIDTH } from '../../../utilities';
 import { CardNoticia } from './components/CardNoticia/CardNoticia';
 import { mision_vision } from './models/mision_vision';
 import { noticias } from './models/noticias'
+import { AntDesign } from '@expo/vector-icons';
 
 export const LandPage = ({ route, navigation }) => {
 
@@ -19,7 +20,7 @@ export const LandPage = ({ route, navigation }) => {
 
                 <BoxSpace side={30} />
 
-                <Text h4 h4Style={{ padding: 15 }}>Noticias</Text>
+                <Text h4 h4Style={{ paddingHorizontal: 15 }}>Noticias</Text>
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -43,7 +44,7 @@ export const LandPage = ({ route, navigation }) => {
                 <ScrollView
                     style={{
                         width: WIDTH,
-                        backgroundColor: "#595959",
+                        backgroundColor: "#393939",
                         paddingVertical: 15
                     }}
                     horizontal={true}
@@ -57,22 +58,35 @@ export const LandPage = ({ route, navigation }) => {
                             <View
                                 key={index}
                                 style={{
-                                    padding: 15,
-                                    width: WIDTH
+                                    width: WIDTH,
+                                    flexDirection: 'row'
                                 }}
                             >
-                                <Text h4
-                                    h4Style={{
-                                        padding: 5,
-                                        color: "#fff",
-                                        textAlign: 'center'
-                                    }}>{mision_vision.title}</Text>
-                                <Text
-                                    style={{
-                                        padding: 5,
-                                        color: "#fff",
-                                        textAlign: 'center'
-                                    }}>{mision_vision.body}</Text>
+                                <View style={{ flex: 1 }} />
+
+                                <View style={{ flex: 6 }} >
+                                    <Text h4
+                                        h4Style={{
+                                            padding: 5,
+                                            color: "#fff",
+                                            textAlign: 'center'
+                                        }}>{mision_vision.title}</Text>
+                                    <Text
+                                        style={{
+                                            padding: 5,
+                                            color: "#fff",
+                                            textAlign: 'center'
+                                        }}>{mision_vision.body}</Text>
+                                </View>
+
+                                <View style={{
+                                    flex: 1,
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }} >
+                                    <AntDesign name="arrowright" size={24} color="#fff" />
+                                </View>
+
                             </View>
                         ))
                     }
