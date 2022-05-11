@@ -2,7 +2,7 @@
 import { Button, Card, Input, Text } from '@rneui/themed'
 import React from 'react'
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, View } from 'react-native'
-import { BoxSpace, TopBar } from '../../../components'
+import { BoxSpace, ButtonSecondary, TopBar } from '../../../components'
 import { globalstyles } from '../../../styled-components'
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@rneui/themed';
@@ -15,7 +15,8 @@ export const Loggin = ({ route, navigation }) => {
     const {
         isLoading,
         iniciarSesion,
-        updateLoggin
+        updateLoggin,
+        navigateToCrearCliente
     } = useLoggin({ route, navigation });
 
     return (
@@ -48,6 +49,13 @@ export const Loggin = ({ route, navigation }) => {
                             onPress={() => iniciarSesion()}
                             buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
                         />
+
+                        <BoxSpace side={15} />
+                        <ButtonSecondary
+                            label='Crear una cuenta'
+                            funcOnPress={navigateToCrearCliente}
+                        />
+
                     </Card>
                 </SafeAreaView>
             </ScrollView>

@@ -4,6 +4,7 @@ import { Card, useTheme, Text } from '@rneui/themed';
 import { Image, View } from 'react-native';
 // import { dateToString } from '../../../../../../../utilities/date';
 import { dateToString } from '../../../../../utilities/date';
+import { WIDTH } from '../../../../../utilities';
 
 export const CardNoticia = ({
     title = null,
@@ -17,7 +18,7 @@ export const CardNoticia = ({
 
     return (
         <Card>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ width: WIDTH * 0.7, flexDirection: 'row' }}>
                 <View style={{ flex: 3 }}>
                     <Text style={{ fontSize: 18 }}>{title}</Text>
                     <Text style={{ fontSize: 12, color: theme.colors.grey2 }}>{dateToString(date)}</Text>

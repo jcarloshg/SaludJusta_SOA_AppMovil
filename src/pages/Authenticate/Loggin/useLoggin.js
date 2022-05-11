@@ -52,9 +52,20 @@ export const useLoggin = ({ route, navigation }) => {
         navigation.navigate('ManageAppointmentsHome', { screen: 'Wecome' });
     }
 
+    const navigateToCrearCliente = () => {
+        navigation.navigate(
+            'HomeAutenticate',
+            {
+                screen: 'CrearCliente',
+                // params: { shop: shop, }
+            }
+        );
+    }
+
     return {
         isLoading,
         iniciarSesion,
-        updateLoggin
+        updateLoggin,
+        navigateToCrearCliente
     }
 }

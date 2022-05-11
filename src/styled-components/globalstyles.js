@@ -1,8 +1,9 @@
 import React from 'react'
 import { StyleSheet, Dimensions } from 'react-native';
+import { height } from '../utilities';
 import { colors } from './colors';
 
-const height = Dimensions.get('window').height - 25;
+// const height = Dimensions.get('window').height - 25;
 
 export const globalstyles = StyleSheet.create({
 
