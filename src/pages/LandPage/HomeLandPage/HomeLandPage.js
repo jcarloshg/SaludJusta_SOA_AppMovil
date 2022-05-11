@@ -7,11 +7,13 @@ import { TopBar } from '../../../components';
 
 const Stack = createNativeStackNavigator();
 
-export const HomeLandPage = () => {
+export const HomeLandPage = ({ route, navigation }) => {
+
+
 
     return (
         <>
-            <TopBar />
+            <TopBar navigation={navigation} />
 
             <Stack.Navigator initialRouteName="LandPage">
                 <Stack.Screen name="LandPage" component={LandPage} options={{ headerShown: false }} />

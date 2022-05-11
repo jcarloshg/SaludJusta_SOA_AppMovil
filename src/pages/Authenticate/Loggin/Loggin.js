@@ -22,7 +22,7 @@ export const Loggin = ({ route, navigation }) => {
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
             <TopBar />
             <ScrollView>
-                <SafeAreaView style={[globalstyles.container, { justifyContent: 'center' }]}>
+                <SafeAreaView style={[globalstyles.container_bottom_TopBar, { justifyContent: 'center' }]}>
                     <Card>
 
                         <Text h3 style={{ fontSize: 18, textAlign: 'center' }}>Iniciar sesion</Text>

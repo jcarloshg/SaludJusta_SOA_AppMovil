@@ -50,7 +50,7 @@ export const ConfirmAppointment = ({ route, navigation }) => {
                         <Divider />
                         <BoxSpace side={15} />
 
-                        <Text h4 h4Style={{ fontSize: 16 }}>Datos de la cita</Text>
+                        <Text h4 h4Style={{ fontSize: 16 }}>Examen</Text>
                         <BoxSpace side={15} border={false} />
 
                         {rederData("Examen", examCatalogItem.typeExam)}
@@ -60,7 +60,7 @@ export const ConfirmAppointment = ({ route, navigation }) => {
                         <Divider />
                         <BoxSpace side={15} />
 
-                        <Text h4 h4Style={{ fontSize: 16 }}>Datos de la cita</Text>
+                        <Text h4 h4Style={{ fontSize: 16 }}>Datos de la persona</Text>
                         <BoxSpace side={15} border={false} />
 
                         {rederData('Nombre(s)', userClient.name)}

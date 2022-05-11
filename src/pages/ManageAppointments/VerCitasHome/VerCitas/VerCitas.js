@@ -7,30 +7,37 @@ import { globalstyles } from '../../../../styled-components'
 import { useVerCitas } from './useVerCitas'
 import { AntDesign } from '@expo/vector-icons';
 import { CardAppointment } from './components/CardAppointment/CardAppointment'
+import { dateToString } from '../../../../utilities/date/dateToString'
 
 export const VerCitas = ({ route, navigation }) => {
 
     Keyboard.dismiss(); // hidden keyboard
 
     const {
-        appointments
+        showAppoints,
+        goToVerResultados, verTodas,
+        showDatepicker, date,
     } = useVerCitas({ route, navigation });
 
     const renderNotAppointments = () => (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             <Text style={{ textAlign: 'center' }}>No hay citas registradas</Text>
-            <ButtonSecondary label='Regresar' />
+            <ButtonSecondary
+                label='Regresar'
+                funcOnPress={() => navigation.goBack()}
+            />
         </View>
     )
 
     const renderAppointments = () => (
         <ScrollView style={[{ flex: 1 }]}>
             {
-                appointments.map(
+                showAppoints.map(
                     (appoint, index) =>
                         <CardAppointment
                             key={index}
                             appointment={appoint}
+                            funcOnPress={() => goToVerResultados(appoint)}
                         />
                 )
             }
@@ -48,16 +55,21 @@ export const VerCitas = ({ route, navigation }) => {
                 <BoxSpace side={15} />
 
                 <Input
-                    label={"Ingresa una fecha"}
+                    // label={"Ingresa una fecha"}
                     // placeholder='Ingresa una fecha para tu cita'
                     inputStyle={{ fontSize: 14 }}
-                    // value={dateToString(date)}
-                    onPressIn={() => console.log("asdfsadf")}
+                    value={dateToString(date)}
+                    onPressIn={() => showDatepicker()}
                     rightIcon={<AntDesign name="calendar" size={24} color="black" />}
                 />
 
+                <ButtonSecondary
+                    label='Ver todas'
+                    funcOnPress={() => verTodas()}
+                />
+
                 {
-                    appointments.length === 0
+                    showAppoints.length === 0
                         ? renderNotAppointments()
                         : renderAppointments()
                 }

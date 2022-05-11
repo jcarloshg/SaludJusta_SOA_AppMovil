@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../contexts/DataProvider/DataProvider';
 import User from '../../models/entities/User.entitie';
 
-export const useTopBar = () => {
+export const useTopBar = ({ navigation }) => {
 
     const logo = require('../../assets/salud_justa_logo.png');
 
@@ -12,6 +12,16 @@ export const useTopBar = () => {
     const { dataProvider, setDataProvider } = useContext(DataContext);
 
     const [userClient, setUserClient] = useState(new User({}));
+
+    const navigateToLoggin = () => {
+        navigation.navigate(
+            'HomeAutenticate',
+            {
+                screen: 'Loggin',
+                // params: { shop: shop, }
+            }
+        );
+    }
 
     useEffect(() => {
         setUserClient(dataProvider.userClient);
@@ -22,6 +32,7 @@ export const useTopBar = () => {
     return {
         logo,
         theme,
-        userClient
+        userClient,
+        navigateToLoggin
     };
 }

@@ -12,16 +12,6 @@ export const LandPage = ({ route, navigation }) => {
 
     const { theme } = useTheme();
 
-    const navigateToLoggin = () => {
-        navigation.navigate(
-            'HomeAutenticate',
-            {
-                screen: 'Loggin',
-                // params: { shop: shop, }
-            }
-        );
-    }
-
     const navigateToCrearCliente = () => {
         navigation.navigate(
             'HomeAutenticate',
@@ -36,11 +26,6 @@ export const LandPage = ({ route, navigation }) => {
         <>
             <SafeAreaView style={globalstyles.container_flex}>
 
-                <Button
-                    title={'Iniciar sesión'}
-                    onPress={() => navigateToLoggin()}
-                    buttonStyle={{ backgroundColor: theme?.myColors.PRIMARY }}
-                />
                 <BoxSpace side={15} />
                 <Button
                     title={'Crear cuenta'}
