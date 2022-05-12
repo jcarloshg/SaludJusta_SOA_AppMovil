@@ -30,7 +30,7 @@ export const ConfirmAppointment = ({ route, navigation }) => {
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} >
-            <SafeAreaView style={[globalstyles.container_bottom_TopBar, { alignItems: 'center' }]}>
+            <SafeAreaView style={[globalstyles.container_bottom_TopBar]}>
 
                 <BoxSpace side={15} />
                 <Text h3>Confirma tu cita</Text>

@@ -49,6 +49,7 @@ export const CrearCuenta = ({ route, navigation }) => {
                         label={'Confirma contraseña'}
                         onChangeText={(confiPass) => changePass({ _confiPass: confiPass })}
                         secureTextEntry={true}
+                        leftIcon={<Ionicons name="md-key-outline" size={24} color="black" />}
                     />
 
                     <View style={[globalstyles.bottom_element]}>

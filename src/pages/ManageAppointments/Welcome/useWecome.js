@@ -7,6 +7,7 @@ import User from '../../../models/entities/User.entitie';
 export const useWecome = ({ route, navigation }) => {
 
     const { dataProvider, setDataProvider } = useContext(DataContext);
+    const userClient = new User(dataProvider.userClient);
 
     const { theme } = useTheme();
 
@@ -47,9 +48,17 @@ export const useWecome = ({ route, navigation }) => {
 
     }, []);
 
-    const goToCreateAppointment = () => navigation.navigate('CreateAppointmentHome');
+    const goToCreateAppointment = () => {
+        userClient.idUser === null
+            ? navigation.navigate('HomeAutenticate', { screen: 'Loggin' })
+            : navigation.navigate('CreateAppointmentHome')
+    }
 
-    const goToVerCitasHome = () => navigation.navigate('VerCitasHome');
+    const goToVerCitasHome = () => {
+        userClient.idUser === null
+            ? navigation.navigate('HomeAutenticate', { screen: 'Loggin' })
+            : navigation.navigate('VerCitasHome')
+    }
 
     return {
         theme,
