@@ -2,13 +2,13 @@
 import { Button, useTheme, Text } from '@rneui/themed';
 import React from 'react'
 import { SafeAreaView, ScrollView, View } from 'react-native'
-import { BoxSpace } from '../../../components/BoxSpace/BoxSpace';
-import { colors, globalstyles } from '../../../styled-components';
-import { WIDTH } from '../../../utilities';
-import { CardNoticia } from './components/CardNoticia/CardNoticia';
-import { mision_vision } from './models/mision_vision';
-import { noticias } from './models/noticias'
-import { AntDesign } from '@expo/vector-icons';
+// import { BoxSpace } from '../../../components/BoxSpace/BoxSpace';
+// import { colors, globalstyles } from '../../../styled-components';
+// import { WIDTH } from '../../../utilities';
+// import { CardNoticia } from './components/CardNoticia/CardNoticia';
+// import { mision_vision } from './models/mision_vision';
+// import { noticias } from './models/noticias'
+// import { AntDesign } from '@expo/vector-icons';
 
 export const LandPage = ({ route, navigation }) => {
 
@@ -17,7 +17,7 @@ export const LandPage = ({ route, navigation }) => {
     return (
         <SafeAreaView >
             <ScrollView>
-
+{/* 
                 <BoxSpace side={30} />
 
                 <Text h4 h4Style={{ paddingHorizontal: 15 }}>Noticias</Text>
@@ -94,7 +94,7 @@ export const LandPage = ({ route, navigation }) => {
                 </ScrollView>
 
 
-                <BoxSpace side={30} />
+                <BoxSpace side={30} /> */}
 
             </ScrollView>
 

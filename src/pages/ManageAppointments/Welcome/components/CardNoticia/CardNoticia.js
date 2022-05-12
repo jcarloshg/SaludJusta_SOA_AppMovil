@@ -2,9 +2,7 @@
 import React from 'react'
 import { Card, useTheme, Text } from '@rneui/themed';
 import { Image, View } from 'react-native';
-// import { dateToString } from '../../../../../../../utilities/date';
-import { dateToString } from '../../../../../utilities/date';
-import { WIDTH } from '../../../../../utilities';
+import { dateToString, WIDTH } from '../../../../../utilities';
 
 export const CardNoticia = ({
     title = null,

@@ -59,7 +59,7 @@ export const globalstyles = StyleSheet.create({
 
     bottom_element: {
         position: "absolute",
-        bottom: 45,
+        bottom: 15,
         width: "100%",
         alignSelf: 'center'
     }
