@@ -69,7 +69,8 @@ export const LandPage = ({ route, navigation }) => {
                                         h4Style={{
                                             padding: 5,
                                             color: "#fff",
-                                            textAlign: 'center'
+                                            textAlign: 'center',
+                                            fontSize: 18
                                         }}>{mision_vision.title}</Text>
                                     <Text
                                         style={{

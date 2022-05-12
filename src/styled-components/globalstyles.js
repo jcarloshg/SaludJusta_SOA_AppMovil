@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Dimensions } from 'react-native';
-import { height } from '../utilities';
+import { StyleSheet } from 'react-native';
+import { HEIGHT } from '../utilities/dimensions';
 import { colors } from './colors';
 
 // const height = Dimensions.get('window').height - 25;
@@ -37,7 +37,7 @@ export const globalstyles = StyleSheet.create({
 
     container: {
         // flex: 1,
-        height: height,
+        height: HEIGHT,
         padding: 15
     },
 
@@ -48,13 +48,13 @@ export const globalstyles = StyleSheet.create({
 
     container_bottom_TopBar: {
         // flex: 1,
-        height: height - 100,
+        height: HEIGHT - 100,
         padding: 15
     },
 
     container_bottom_TopBar_plok: {
         // flex: 1,
-        height: height - 100,
+        height: HEIGHT - 100,
     },
 
     bottom_element: {

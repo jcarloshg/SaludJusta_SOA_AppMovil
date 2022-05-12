@@ -11,7 +11,7 @@ export const ManageAppointmentsHome = ({ route, navigation }) => {
 
     return (
         <>
-            <TopBar />
+            <TopBar navigation={navigation} />
             <Stack.Navigator initialRouteName="Wecome">
                 <Stack.Screen name="Wecome" component={Wecome} options={{ headerShown: false }} />
                 <Stack.Screen name="CreateAppointmentHome" component={CreateAppointmentHome} options={{ headerShown: false }} />

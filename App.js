@@ -31,8 +31,8 @@ export default function App() {
 
 					<StatusBar backgroundColor="#FFF" barStyle={'dark-content'} animated={true} />
 
-					<Stack.Navigator initialRouteName="HomeLandPage">
-						<Stack.Screen name="HomeLandPage" component={HomeLandPage} options={{ headerShown: false }} />
+					<Stack.Navigator initialRouteName="ManageAppointmentsHome">
+						{/* <Stack.Screen name="HomeLandPage" component={HomeLandPage} options={{ headerShown: false }} /> */}
 						<Stack.Screen name="HomeAutenticate" component={HomeAutenticate} options={{ headerShown: false }} />
 						<Stack.Screen name="ManageAppointmentsHome" component={ManageAppointmentsHome} options={{ headerShown: false }} />
 					</Stack.Navigator>

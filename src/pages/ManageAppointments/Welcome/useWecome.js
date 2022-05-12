@@ -14,13 +14,14 @@ export const useWecome = ({ route, navigation }) => {
 
         const _cerrarSesion = () => {
             setDataProvider(dataProvider => ({ ...dataProvider, userClient: new User({}) }));
+            BackHandler.exitApp();
 
-            navigation.navigate(
-                'HomeLandPage',
-                {
-                    screen: 'LandPage',
-                }
-            );
+            // navigation.navigate(
+            //     'HomeLandPage',
+            //     {
+            //         screen: 'LandPage',
+            //     }
+            // );
         }
 
         Alert.alert("Cerrar sesión", "¿Seguro que quieres cerrar sesión?", [
